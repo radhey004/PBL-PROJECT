@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Subject</title>
+    <link rel="stylesheet" href="/css/subjectselectionstyle.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Learning Pathway Generator</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="loginform.html">Login</a></li>
+            <li><a href="registrationform.html">Register</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Select Your Subject</h1>
+        <p>Choose a subject or search for one to generate a personalized learning roadmap.</p>
+    </header>
+
+    <section class="subject-selection">
+        <input type="text" id="searchBar" placeholder="Search for a subject..." onkeyup="filterSubjects()">
+        
+        <form id="subjectForm" action="roadmap.html" method="GET">
+            <ul id="subjectList">
+                <label>SECOND YEAR SUBJECTS</label>
+                <li><input type="radio" name="subject" value="Engineering Mathematics III"> Engineering Mathematics III</li>
+                <li><input type="radio" name="subject" value="Data Structures and Algorithms"> Data Structures and Algorithms</li>
+                <li><input type="radio" name="subject" value="Electronic Circuits"> Electronic Circuits</li>
+                <li><input type="radio" name="subject" value="Digital Circuits"> Digital Circuits</li>
+                <li><input type="radio" name="subject" value="Electrical Circuits"> Electrical Circuits</li>
+                <li><input type="radio" name="subject" value="Signals and Systems">Signals and Systems </li>
+                <li><input type="radio" name="subject" value="Control Systems">Control Systems </li>
+                <li><input type="radio" name="subject" value="Principles of Communication Systems">Principles of Communication Systems </li>
+                <li><input type="radio" name="subject" value="Object Oriented Programming">Object-Oriented Programming </li>
+            </ul>
+            <button type="submit">Generate Roadmap</button>
+        </form>
+    </section>
+
+    <script>
+        function filterSubjects() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let subjects = document.querySelectorAll('#subjectList li');
+            subjects.forEach(subject => {
+                let text = subject.textContent.toLowerCase();
+                subject.style.display = text.includes(input) ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

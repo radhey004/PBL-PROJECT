@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Roadmap</title>
+    <link rel="stylesheet" href="/css/roadmapstyle.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Learning Pathway Generator</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="loginform.html">Login</a></li>
+            <li><a href="registrationform.html">Register</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Personalized Learning Roadmap</h1>
+        <p id="subjectTitle"></p>
+    </header>
+
+    <section class="roadmap" id="roadmapContainer">
+        <!-- Roadmap steps will be dynamically generated here -->
+    </section>
+
+    <section class="videos" id="videoContainer" style="display:none;">
+        <h2>Recommended Video Tutorials</h2>
+        <div id="videosList"></div>
+    </section>
+
+    <script>
+        const roadmaps = {
+            "Engineering Mathematics III": {
+                steps: [
+                    "Linear Differential Equations(LDE) and Applications",
+                    "Transforms(Fourier and Z- Transform)",
+                    "Numerical Methods",
+                    "Vector Calculus",
+                    "Complex Variables"
+                ],
+                videos: {
+                    "Linear Differential Equations(LDE) and Applications": "https://www.youtube.com/embed/playlist?list=PLT3bOBUU3L9hVIB2YDskrj6L91FgGnenU",
+                    "Transforms(Fourier and Z- Transform)": [
+                    "https://www.youtube.com/embed/Z-IqRhnGN68?si=bmVha-ZGyW6YG7Et",
+                    "https://www.youtube.com/embed/m-CX1viswJo?si=fkXZkruG0xoXpOhQ"
+                 ],
+                    "Numerical Methods":"https://www.youtube.com/embed/77UZR8n6I4E",
+                    "Vector Calculus": "https://youtube.com/embed/playlist?list=PLT3bOBUU3L9hvSQJ1XqJIcxZPyo5sNwj_",
+                    "Complex Variables" : "https://youtube.com/embed/playlist?list=PLT3bOBUU3L9hwFndLXTp0wFqwrwP4plrH"
+                }
+            },
+            "Data Structures and Algorithms": {
+                steps: [
+                    "Introduction to C Programming",
+                    "Searching and Sorting Algorithm",
+                    "Stack and Queue",
+                    "Linked List",
+                    "Trees",
+                    "Graphs"
+                ],
+                videos: {
+                    "Introduction to C Programming":"https://youtube.com/embed/playlist?list=PLu0W_9lII9ahIappRPN0MCAgtOu3lQjQi",
+                    "Searching and Sorting Algorithm":"https://youtube.com/embed/playlist?list=PLu0W_9lII9ahIappRPN0MCAgtOu3lQjQi",
+                    "Stack and Queue":"https://youtube.com/embed/playlist?list=PLu0W_9lII9ahIappRPN0MCAgtOu3lQjQi",
+                    "Linked List":"https://youtube.com/embed/playlist?list=PLu0W_9lII9ahIappRPN0MCAgtOu3lQjQi",
+                    "Trees":"https://youtube.com/embed/playlist?list=PLu0W_9lII9ahIappRPN0MCAgtOu3lQjQi",
+                    "Graphs":"https://youtube.com/embed/playlist?list=PLu0W_9lII9ahIappRPN0MCAgtOu3lQjQi"
+                }
+            },
+            "Electronic Circuits":{
+                steps:[
+                    "MOSFET and its Analysis",
+                    "MOSFET Circuits",
+                    "Voltage Regulators",
+                    "Operational Amplifier",
+                    "Op-Amp Applications",
+                    "Converters and PLL"
+                ],
+                videos:{
+                    "MOSFET and its Analysis":"https://youtube.com/embed/playlist?list=PLufrisVwaCGsNYDUYB-aT8JI0HAMEm5Z0",
+                    "MOSFET Circuits":"https://youtube.com/playlist?list=PLufrisVwaCGsNYDUYB-aT8JI0HAMEm5Z0",
+                    "Voltage Regulators":"https://youtube.com/playlist?list=PLufrisVwaCGsNYDUYB-aT8JI0HAMEm5Z0",
+                    "Operational Amplifier":"https://youtube.com/playlist?list=PLufrisVwaCGsNYDUYB-aT8JI0HAMEm5Z0",
+                    "Op-Amp Applications":"https://youtube.com/playlist?list=PLufrisVwaCGsNYDUYB-aT8JI0HAMEm5Z0",
+                    "Converters and PLL":"https://youtube.com/playlist?list=PLufrisVwaCGsNYDUYB-aT8JI0HAMEm5Z0"
+                }
+            },
+            "Digital Circuits":{
+                steps:[
+                    "Digital Logic Families",
+                    "Combinational Logic Design",
+                    "Combinational Circuits",
+                    "Sequential Logic Design",
+                    "State Machines",
+                    "Programmable Logic Devices"
+                ],
+                videos:{
+                    "Digital Logic Families": "https://youtube.com/embed/playlist?list=PLgwJf8NK-2e7nYSG31YWEUfwgAp2uIOBY",
+                    "Combinational Logic Design": "https://youtube.com/embed/playlist?list=PLgwJf8NK-2e7nYSG31YWEUfwgAp2uIOBY",
+                    "Combinational Circuits": "https://youtube.com/embed/playlist?list=PLgwJf8NK-2e7nYSG31YWEUfwgAp2uIOBY",
+                    "Sequential Logic Design": "https://youtube.com/embed/playlist?list=PLgwJf8NK-2e7nYSG31YWEUfwgAp2uIOBY",
+                    "State Machines": "https://youtube.com/embed/playlist?list=PLgwJf8NK-2e7nYSG31YWEUfwgAp2uIOBY",
+                    "Programmable Logic Devices": "https://youtube.com/embed/playlist?list=PLgwJf8NK-2e7nYSG31YWEUfwgAp2uIOBY"
+                }
+            },
+            "Electrical Circuits":{
+                steps:[
+                    "Basic Circuit analysis and Simplification Techniques",
+                    "Transient Analysis of Basic RL,RC, and RLC Circuits",
+                    "Two port Network Parameters and Functions",
+                    "DC Machines",
+                    "AC Motors(Single phase and Three phase)",
+                    "Special Purpose Motor"
+                ],
+                videos:{
+                    "Basic Circuit analysis and Simplification Techniques":"https://youtube.com/embed/playlist?list=PLufrisVwaCGtM0XpUqYGpXQJ7FEgEfBLX",
+                    "Transient Analysis of Basic RL,RC, and RLC Circuits":"https://youtube.com/embed/playlist?list=PLufrisVwaCGtM0XpUqYGpXQJ7FEgEfBLX",
+                    "Two port Network Parameters and Functions":"https://youtube.com/embed/playlist?list=PLufrisVwaCGtM0XpUqYGpXQJ7FEgEfBLX",
+                    "DC Machines":"https://youtube.com/embed/playlist?list=PLufrisVwaCGtM0XpUqYGpXQJ7FEgEfBLX",
+                    "AC Motors(Single phase and Three phase)":"https://youtube.com/embed/playlist?list=PLufrisVwaCGtM0XpUqYGpXQJ7FEgEfBLX",
+                    "Special Purpose Motor":"https://youtube.com/embed/playlist?list=PLufrisVwaCGtM0XpUqYGpXQJ7FEgEfBLX"
+                }
+            },
+            "Signals and Systems":{
+                steps:[
+                    "Introduction to Signals and Systems",
+                    "Time Domain Representation of LTI system",
+                    "Fourier Series",
+                    "Fourier Transform",
+                    "Laplace Transform",
+                    "Probabilty and Random Variables"
+                ],
+                videos:{
+                    "Introduction to Signals and Systems":"https://youtube.com/embed/playlist?list=PLufrisVwaCGuvp3FNLlGW0nxw2_LC4b-Z",
+                    "Time Domain Representation of LTI system":"https://youtube.com/embed/playlist?list=PLufrisVwaCGuvp3FNLlGW0nxw2_LC4b-Z",
+                    "Fourier Series":"https://youtube.com/embed/playlist?list=PLufrisVwaCGuvp3FNLlGW0nxw2_LC4b-Z",
+                    "Fourier Transform":"https://youtube.com/embed/playlist?list=PLufrisVwaCGuvp3FNLlGW0nxw2_LC4b-Z",
+                    "Laplace Transform": "https://youtube.com/embed/playlist?list=PLufrisVwaCGuvp3FNLlGW0nxw2_LC4b-Z",
+                    "Probabilty and Random Variables":"https://youtube.com/embed/playlist?list=PLufrisVwaCGuvp3FNLlGW0nxw2_LC4b-Z"
+                }
+            },
+            "Control Systems":{
+                steps:[
+                    "Introduction to Control System and Modelling",
+                    "Time Domain Analysis",
+                    "Stability Analysis",
+                    "Frequency Domain Analysis",
+                    "State Space Represtation",
+                    "Controllers and Digital Control Systems"
+                ],
+                videos:{
+                   "Introduction to Control System and Modelling": "https://youtube.com/embed/playlist?list=PLufrisVwaCGtHlqlsYSEWuxB4_Q2UJ54W",
+                   "Time Domain Analysis": "https://youtube.com/embed/playlist?list=PLufrisVwaCGtHlqlsYSEWuxB4_Q2UJ54W",
+                   "Stability Analysis": "https://youtube.com/embed/playlist?list=PLufrisVwaCGtHlqlsYSEWuxB4_Q2UJ54W",
+                   "Frequency Domain Analysis": "https://youtube.com/embed/playlist?list=PLufrisVwaCGtHlqlsYSEWuxB4_Q2UJ54W",
+                   "State Space Representation": "https://youtube.com/embed/playlist?list=PLufrisVwaCGtHlqlsYSEWuxB4_Q2UJ54W",
+                   "Controllers and Digital Control Systems": "https://youtube.com/embed/playlist?list=PLufrisVwaCGtHlqlsYSEWuxB4_Q2UJ54W"
+                }
+            },
+            "Principles of Communication Systems":{
+                steps:[
+                    "Signals and Spectra",
+                    "AM transmission and reception for signal tone",
+                    "FM transmission and reception for signal tone",
+                    "Pulse Modulation",
+                    "Digital Representation of Analog signals",
+                    "Baseband Digital Transmission"
+                ],
+                videos:{
+                   "Signals and Spectra" :"https://youtube.com/embed/playlist?list=PLufrisVwaCGu-kLZA3PbmdrYi1Kn3aKmu",
+                    "AM transmission and reception for signal tone":"https://youtube.com/embed/playlist?list=PLufrisVwaCGu-kLZA3PbmdrYi1Kn3aKmu",
+                    "FM transmission and reception for signal tone":"https://youtube.com/embed/playlist?list=PLufrisVwaCGu-kLZA3PbmdrYi1Kn3aKmu",
+                    "Pulse Modulation":"https://youtube.com/embed/playlist?list=PLufrisVwaCGu-kLZA3PbmdrYi1Kn3aKmu",
+                    "Digital Representation of Analog signals":"https://youtube.com/embed/playlist?list=PLufrisVwaCGu-kLZA3PbmdrYi1Kn3aKmu",
+                    "Baseband Digital Transmission":"https://youtube.com/embed/playlist?list=PLufrisVwaCGu-kLZA3PbmdrYi1Kn3aKmu"
+                }
+            },
+            "Object Oriented Programming":{
+                steps:[
+                    "Foundation of Object Oriented Programming",
+                    "Classes and Objects",
+                    "Operator Overloading",
+                    "Inheritance and Polymorphism",
+                    "Templates,Namespaces and Exception Handling",
+                    "Working with Files"
+                ],
+                videos:{
+                    "Foundation of Object Oriented Programming":"https://youtube.com/embed/playlist?list=PLmzx9ODNih1IZMLiwqJugEGH8PYTvmqoL",
+                    "Classes and Objects":"https://youtube.com/embed/playlist?list=PLmzx9ODNih1IZMLiwqJugEGH8PYTvmqoL",
+                    "Operator Overloading":"https://youtube.com/embed/playlist?list=PLmzx9ODNih1IZMLiwqJugEGH8PYTvmqoL",
+                    "Inheritance and Polymorphism":"https://youtube.com/embed/playlist?list=PLmzx9ODNih1IZMLiwqJugEGH8PYTvmqoL",
+                    "Templates,Namespaces and Exception Handling":"https://youtube.com/embed/playlist?list=PLmzx9ODNih1IZMLiwqJugEGH8PYTvmqoL",
+                    "Working with Files":"https://youtube.com/embed/playlist?list=PLmzx9ODNih1IZMLiwqJugEGH8PYTvmqoL"
+                    
+                }
+            },
+
+        };
+
+        function generateRoadmap() {
+            const params = new URLSearchParams(window.location.search);
+            const subject = params.get('subject');
+            document.getElementById('subjectTitle').textContent = `Your Learning Path for ${subject}`;
+
+            if (roadmaps[subject]) {
+                const roadmapContainer = document.getElementById('roadmapContainer');
+                let roadmapSteps = '';
+
+                roadmaps[subject].steps.forEach(step => {
+                    roadmapSteps += `<li>${step} 
+                        <button class="video-btn" onclick="playVideo('${subject}', '${step}')">Watch Video</button>
+                    </li>`;
+                });
+
+                roadmapContainer.innerHTML = `<ul>${roadmapSteps}</ul>`;
+            } else {
+                document.getElementById('roadmapContainer').innerHTML = "<p>No roadmap available for this subject.</p>";
+            }
+        }
+
+        function playVideo(subject, step) {
+            const videoUrl = roadmaps[subject]?.videos[step];
+
+            if (videoUrl) {
+                document.getElementById('videoContainer').style.display = "block";
+                document.getElementById('videosList').innerHTML = `
+                    <iframe width="560" height="315" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>
+                `;
+            }
+        }
+
+        window.onload = generateRoadmap;
+    </script>
+</body>
+</html>
+
+

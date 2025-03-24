@@ -1,0 +1,192 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background: #007bff;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f8f9fa;
+}
+
+/* Hero Section */
+.hero {
+    background: #0056b3;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 32px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Subject Selection Section */
+.subject-selection {
+    background: white;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+
+
+
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #0073e6;
+    outline: none;
+    cursor: pointer;
+}
+
+button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #005bb5;
+}
+
+
+
+
+
+
+
+
+
+#searchBar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#subjectList {
+    list-style: none;
+    padding: 0;
+}
+
+#subjectList li {
+    background: #f8f9fa;
+    padding: 12px;
+    margin: 10px 0;
+    border-left: 5px solid #007bff;
+    text-align: left;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#subjectList li:hover {
+    background: #e2e6ea;
+}
+
+/* Radio Buttons */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    display: block;
+    background: #28a745;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 20px auto;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .subject-selection {
+        width: 90%;
+    }
+}
